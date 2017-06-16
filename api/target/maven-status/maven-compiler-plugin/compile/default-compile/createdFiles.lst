@@ -1,0 +1,5 @@
+nl\hro\rick\mesosbank\api\WithdrawRequest.class
+nl\hro\rick\mesosbank\api\BalanceResponse.class
+nl\hro\rick\mesosbank\api\WithdrawResponse.class
+nl\hro\rick\mesosbank\api\PinAuthenticatieResponse.class
+nl\hro\rick\mesosbank\api\AuthenticatieResponse.class

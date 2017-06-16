@@ -1,0 +1,5 @@
+nl\hro\rick\mesosbank\server\Database.class
+nl\hro\rick\mesosbank\server\BankEndpoint.class
+nl\hro\rick\mesosbank\server\Server.class
+nl\hro\rick\mesosbank\server\MockDatabase.class
+nl\hro\rick\mesosbank\server\Databaseimpl.class
