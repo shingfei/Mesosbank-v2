@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="615085ca-472a-462b-882d-7a4e189a0f18" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/App.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/ReadCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/target/classes/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.class" afterPath="$PROJECT_DIR$/api/target/classes/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/MyClient.class" afterPath="$PROJECT_DIR$/client/target/classes/MyClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard.class" afterPath="$PROJECT_DIR$/client/target/classes/ReadCard.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/AuthenticatieResponse.java" afterPath="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/AuthenticatieResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.java" afterPath="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/MyClient.java" afterPath="$PROJECT_DIR$/client/src/main/java/MyClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/ReadCard.java" afterPath="$PROJECT_DIR$/client/src/main/java/ReadCard.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,16 +40,16 @@
         <entry file="file://$PROJECT_DIR$/client/src/main/java/ReadCard.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="109" column="59" lean-forward="true" selection-start-line="109" selection-start-column="59" selection-end-line="109" selection-end-column="59" />
+              <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
               <folding>
-                <element signature="e#0#49303#0" expanded="true" />
+                <element signature="e#0#49269#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="class#timer#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#ReadCard#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#initialize#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#nullmaker#0;class#ReadCard#0" expanded="false" />
                 <element signature="docComment;field#PORT_NAMES#0;class#ReadCard#0" expanded="false" />
-                <element signature="e#9125#9164#0" expanded="false" />
+                <element signature="e#9091#9130#0" expanded="false" />
                 <element signature="docComment;field#output#0;class#ReadCard#0" expanded="false" />
                 <element signature="docComment;field#TIME_OUT#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#readFrame#0;class#ReadCard#0" expanded="false" />
@@ -811,7 +804,7 @@
     <option name="totallyTimeSpent" value="92424000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1256,16 +1249,16 @@
     <entry file="file://$PROJECT_DIR$/client/src/main/java/ReadCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="109" column="59" lean-forward="true" selection-start-line="109" selection-start-column="59" selection-end-line="109" selection-end-column="59" />
+          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
           <folding>
-            <element signature="e#0#49303#0" expanded="true" />
+            <element signature="e#0#49269#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="class#timer#0;class#ReadCard#0" expanded="false" />
             <element signature="method#ReadCard#0;class#ReadCard#0" expanded="false" />
             <element signature="method#initialize#0;class#ReadCard#0" expanded="false" />
             <element signature="method#nullmaker#0;class#ReadCard#0" expanded="false" />
             <element signature="docComment;field#PORT_NAMES#0;class#ReadCard#0" expanded="false" />
-            <element signature="e#9125#9164#0" expanded="false" />
+            <element signature="e#9091#9130#0" expanded="false" />
             <element signature="docComment;field#output#0;class#ReadCard#0" expanded="false" />
             <element signature="docComment;field#TIME_OUT#0;class#ReadCard#0" expanded="false" />
             <element signature="method#readFrame#0;class#ReadCard#0" expanded="false" />
@@ -1342,12 +1335,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Gui</last-edited>
+          <last-edited>client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -107,7 +107,7 @@ public class ReadCard implements SerialPortEventListener {
     int return20 = 0;
     int getal1;
 
-    ImageIcon logo = new ImageIcon("C:\\Users\\SF\\Documents\\GitHub\\Mesosbank-v2\\client\\src\\main\\java\\Mesoslogo.jpg");
+    ImageIcon logo = new ImageIcon("Mesosbank-v2\\client\\src\\main\\java\\Mesoslogo.jpg");
     JLabel logoLabel = new JLabel(logo);
     JLabel logoLabel1 = new JLabel(logo);
     private String kaart1 = "A034A37C";
