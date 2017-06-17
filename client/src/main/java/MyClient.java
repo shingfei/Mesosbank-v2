@@ -1,28 +1,29 @@
 
-
 import nl.hro.rick.mesosbank.api.*;
-
 import org.glassfish.jersey.jackson.JacksonFeature;
-
+import javax.swing.*;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
-import java.io.*;
 
 /**
  * Created by rick on 24-03-17.
  */
 public class MyClient {
-    private Client client;
-    private WebTarget target;
 
-    private static String ID = "MESO0915328";
+    static private Client client;
+    private WebTarget target;
+    private String ID = "";
     private static String validate = "/validate/";
     private static String validatePin = "/validatePin/";
     private static String pincode = "/2222";
-    private static String UID = "/94 F7 D4 5F";
+    private static String UID = "/ 94 f7 d4 5f";
     private static String balance = "/balance/";
-
-
+    private static String amountMoney = "/10";
+    static WithdrawRequest request = new WithdrawRequest();
+    static BalanceResponse balanceRequest = new BalanceResponse();
+    static PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
+    static AuthenticatieResponse validPas = new AuthenticatieResponse();
+    static long s;
 
     public MyClient(int port) {
         client = ClientBuilder.newClient().register(JacksonFeature.class);
@@ -30,27 +31,32 @@ public class MyClient {
 
     }
 
-    public static void main(String[] args) throws IOException {
-        MyClient client = new MyClient(8025);
-        WithdrawRequest request = new WithdrawRequest();
-        BalanceResponse balanceRequest = new BalanceResponse();
-        request.setIBAN("MESO0915328");
-        request.setAmount(10);
-        PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
-        AuthenticatieResponse validPas = new AuthenticatieResponse();
-        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(balanceRequest.getRekeningNummer(), balanceRequest.getBalance()+" euro.");
-        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.withdraw(request.getIBAN(), request.getAmount()).getNewSaldo() + " euro.");
-        System.out.println(client.pinAuthenticatieResponse(pinresponse.isPinCorrect(),request.getIBAN(),  );
+    public static void main(String[] args){
+        SwingUtilities.invokeLater(new Runnable()
+        {
 
-        // System.out.println(client.authenticatieResponse(validPas.getPasExist(), UID,);
-        //System.out.println(client.authenticatieResponse(request.));
+            public void run()
+            {
+               new ReadCard(8025);
+            }
+        });
+          MyClient client = new MyClient(8025);
+//           System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
+//        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.withdraw(request.getIBAN(), request.getAmount()).getNewSaldo() + " euro.");
 
-        //System.out.println(client.authenticatieResponse());
+//        System.out.println(client.balance(request.getIBAN(), request.getAmount()).getRekeningNummer());
+//        System.out.println(client.authenticatie(UID,balanceRequest.getRekeningNummer()).getPasExist());
 
-
+      //  System.out.println(client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer());
+       // ID = client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer();
+      //  System.out.println(ID);
+        //System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
+//        System.out.println(client.pinAuthenticatie(balanceRequest.getRekeningNummer(),pincode).isPinCorrect());
     }
 
-    public BalanceResponse balance(String IBAN) {
+
+
+    public BalanceResponse balance(String IBAN, long amount) {
         BalanceResponse response = target
                 .path(balance + ID)
                 .request(MediaType.APPLICATION_JSON)
@@ -60,18 +66,16 @@ public class MyClient {
         return response;
     }
 
-
     public WithdrawResponse withdraw(String IBAN, Long amount) {
         WithdrawResponse response = target
-                .path("/withdraw/IBAN/amount")
-                // .queryParam("IBAN",ID)
+                .path("/withdraw/"+ID+ amountMoney)
                 .request()
                 .get(WithdrawResponse.class);
 
         return response;
     }
 
-    public AuthenticatieResponse authenticatieResponse(String UID, String rekeningNr) {
+    public AuthenticatieResponse authenticatie(String UID, String rekeningNr) {
         AuthenticatieResponse response = target
                 .path(validate + ID + UID)
                 .request(MediaType.APPLICATION_JSON)
@@ -80,7 +84,7 @@ public class MyClient {
         return response;
     }
 
-    public PinAuthenticatieResponse pinAuthenticatieResponse(String rekeningNr, String pincode) {
+    public PinAuthenticatieResponse pinAuthenticatie(String rekeningNr, String pincode) {
         PinAuthenticatieResponse response = target
                 .path(validatePin + ID + pincode)
                 .request(MediaType.APPLICATION_JSON)
@@ -88,6 +92,7 @@ public class MyClient {
 
         return response;
     }
+
 
 
 }

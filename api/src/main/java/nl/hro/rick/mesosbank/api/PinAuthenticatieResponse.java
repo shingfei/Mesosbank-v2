@@ -9,6 +9,7 @@ public class PinAuthenticatieResponse {
     @JsonProperty
     private boolean pinCorrect;
 
+
     public PinAuthenticatieResponse(boolean pinCorrect) {
         this.pinCorrect = pinCorrect;
     }

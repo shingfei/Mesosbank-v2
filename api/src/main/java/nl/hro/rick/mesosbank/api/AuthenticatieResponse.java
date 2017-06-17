@@ -7,22 +7,22 @@ import org.codehaus.jackson.annotate.JsonProperty;
  */
 public class AuthenticatieResponse {
 
-    @JsonProperty
-    private boolean pasExist;
+        @JsonProperty
+        private boolean pasExist;
 
-    public AuthenticatieResponse (boolean pasExist)
-    {
-        this.pasExist = pasExist;
-    }
+        public AuthenticatieResponse (boolean pasExist)
+        {
+            this.pasExist = pasExist;
+        }
 
-    public boolean isPasExist() {
-        return pasExist;
-    }
+        public boolean isPasExist() {
+            return pasExist;
+        }
 
-    public boolean getPasExist() {
-        return pasExist;
-    }
+        public boolean getPasExist() {
+            return pasExist;
+        }
 
-    public AuthenticatieResponse() {
-    }
+        public AuthenticatieResponse() {
+        }
 }
