@@ -9,7 +9,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -104,14 +105,15 @@ public class ReadCard implements SerialPortEventListener {
     JButton button50 = new JButton(" x 50 euro[3]");
     JButton returnKeuze = new JButton("Return[C]");
     JButton exitKeuze = new JButton("Exit[D]");
-    int return20 = 0;
-    int getal1;
 
-    ImageIcon logo = new ImageIcon("Mesosbank-v2\\client\\src\\main\\java\\Mesoslogo.jpg");
-    JLabel logoLabel = new JLabel(logo);
-    JLabel logoLabel1 = new JLabel(logo);
-    private String kaart1 = "A034A37C";
-    private String kaart2 = "94F7D45F";
+    ImageIcon logo = new ImageIcon("Mesoslogo.jpg");
+    ImageIcon logoBevestig = new ImageIcon("Bevestigtemp.jpg");
+    ImageIcon logoeind = new ImageIcon("Eindlogo.jpg");
+
+    JLabel logoLabelhome = new JLabel(logo);
+    JLabel logoLabelmenu = new JLabel(logo);
+    JLabel logoLabelok = new JLabel(logoBevestig);
+    JLabel logoLabelEnd = new JLabel(logoeind);
 
     JLabel geldBevestiging = new JLabel(); //Tekst voor de hoeveelheid opnemen van de user
     long saldo; // saldo van de user
@@ -161,6 +163,11 @@ public class ReadCard implements SerialPortEventListener {
                     }
                 }
                 if(secondsAll >60 && pagina != "pin")
+                {
+                    homeButton.doClick(100);
+                    secondsAll = 0;
+                }
+                if(secondsAll> 8 && pagina == "eindPage")
                 {
                     homeButton.doClick(100);
                     secondsAll = 0;
@@ -227,7 +234,7 @@ public class ReadCard implements SerialPortEventListener {
             inputStream = serialPort.getInputStream();
             output = serialPort.getOutputStream();
             // add event listeners
-            serialPort.addEventListener((SerialPortEventListener) this);
+            serialPort.addEventListener(this);
             serialPort.notifyOnDataAvailable(true);
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -281,17 +288,18 @@ public class ReadCard implements SerialPortEventListener {
         GridBagConstraints gbc = new GridBagConstraints();
         scan.setFont(typecharacters);
         scan.setPreferredSize(new Dimension(400, 100));
-        JLabel title = new JLabel("Welkom bij Mesosbank");
+        JLabel title = new JLabel("Welkom bij Mesosbank, Scan uw kaart");
 
         title.setFont(typecharacters);
-        titlePanel.add(title);
+        //titlePanel.add(title);
         gbc.gridx = 0;
         gbc.gridy = 50;
-        buttonPanel.add(logoLabel,gbc);
+        buttonPanel.add(title,gbc);
+        buttonPanel.add(logoLabelhome,gbc);
 
         JPanel homePag = new JPanel();
         homePag.setLayout(new BorderLayout());
-        homePag.add(titlePanel, BorderLayout.NORTH);
+        //homePag.add(titlePanel, BorderLayout.NORTH);
         homePag.add(buttonPanel, BorderLayout.CENTER);
         geldBevestiging.setFont(typecharacters);
 /////////////////// main menu
@@ -322,7 +330,7 @@ public class ReadCard implements SerialPortEventListener {
         gbc.gridx = 0;
         gbc.gridy = 50;
         centerPanel.add(blankLabel,gbc);
-        centerPanel.add(logoLabel1,gbc);
+        centerPanel.add(logoLabelmenu,gbc);
         westPanel.setLayout(new BoxLayout(westPanel, BoxLayout.PAGE_AXIS));
         westPanel.add(snelGeld);
         westPanel.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -369,6 +377,9 @@ public class ReadCard implements SerialPortEventListener {
 
         JPanel keuzePage = new JPanel();
         keuzePage = keuzeBiljet();
+
+        JPanel eindPage = new JPanel();
+        eindPage = eindeProces();
 ///
         cardTest.show(mainPanel,"home");
         mainPanel.add(homePag, "home");// mainpanel linken aan een ander panel en de benaming van dat panel
@@ -380,6 +391,7 @@ public class ReadCard implements SerialPortEventListener {
         mainPanel.add(keuzePage,"keuze");
         mainPanel.add(bevestigPag, "bevestigPage");
         mainPanel.add(bonPag, "bonPage");
+        mainPanel.add(eindPage, "eindPage");
         mainFrame.add(mainPanel);
         pagina = "home";
         //First panel
@@ -517,13 +529,7 @@ public class ReadCard implements SerialPortEventListener {
         homeButton.setFont(typecharacters);
         homeButton.setPreferredSize(new Dimension(200, 100));
 
-        buttonokpanel.add(okLabel,gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 50;
-        buttonokpanel.add(okButton,gbc);
-        gbc.gridx = 200;
-        gbc.gridy = 50;
-        buttonokpanel.add(homeButton,gbc);
+        buttonokpanel.add(logoLabelok,gbc);
 
         okPanel.add(buttonokpanel,BorderLayout.CENTER);
         okPanel.add(oktopPanel, BorderLayout.NORTH);
@@ -671,18 +677,18 @@ public class ReadCard implements SerialPortEventListener {
         ///////////////// Sixth panel print bon
         jaBon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                cardTest.show(mainPanel, "home");
+                cardTest.show(mainPanel, "eindPage");
                 anderField.setText("");
                 pinField.setText("");
-                pagina = "home";
+                pagina = "eindPage";
             }
         });
         neeBon.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                cardTest.show(mainPanel, "home");
+                cardTest.show(mainPanel, "eindPage");
                 anderField.setText("");
                 pinField.setText("");
-                pagina = "home";
+                pagina = "eindPage";
             }
         });
         return bonPage;
@@ -903,7 +909,7 @@ public class ReadCard implements SerialPortEventListener {
         keuzeEast.add(button50);
 
         keuzePanel.add(keuzeNorth,BorderLayout.NORTH);
-        keuzePanel.add(keuzeMid);
+        keuzePanel.add(keuzeMid, BorderLayout.CENTER);
         keuzePanel.add(keuzeEast,BorderLayout.EAST);
         keuzePanel.add(keuzeSouth,BorderLayout.SOUTH);
         pagina = "keuze";
@@ -940,26 +946,52 @@ public class ReadCard implements SerialPortEventListener {
 
         returnKeuze.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                cardTest.show(mainPanel, "home");
+                cardTest.show(mainPanel, "menu");
                 anderField.setText("0");
                 a = 0;
                 button50.setEnabled(true);
-                pagina = "home";
+                pagina = "menu";
             }
         });
 
         exitKeuze.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                cardTest.show(mainPanel, "anderPage");
+                cardTest.show(mainPanel, "home");
                 anderField.setText("0");
                 a = 0;
                 button50.setEnabled(true);
-                pagina = "menu";
+                pagina = "home";
 
             }
         });
 
         return keuzePanel;
+    }
+
+    private JPanel eindeProces()
+    {
+        JPanel eindPanel = new JPanel();
+        eindPanel.setLayout(new GridBagLayout());
+        JPanel eindImage = new JPanel();
+        JPanel filler = new JPanel();
+        JButton eindbutton = new JButton();
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        eindImage.add(logoLabelEnd,gbc);
+        eindPanel.add(eindImage);
+        pagina = "eindPage";
+
+        eindbutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                cardTest.show(mainPanel, "home");
+                anderField.setText("0");
+                a = 0;
+                pagina = "home";
+
+            }
+        });
+        return eindPanel;
     }
 
     private JPanel saldoWeergave() {
@@ -1207,8 +1239,8 @@ public class ReadCard implements SerialPortEventListener {
                     if (inputLine.equals("1")) {tienEuro.doClick(300);
                     } else if (inputLine.equals("2")) {twintigEuro.doClick(300);
                     } else if (inputLine.equals("3")) {vijftigEuro.doClick(300);
-                    } else if (inputLine.equals("A") ) {saldoButton.doClick(300);
-                    } else if (inputLine.equals("B")) {anderButton.doClick(300);
+                    } else if (inputLine.equals("A") ) {saldoButton.doClick(300);inputLine = null;
+                    } else if (inputLine.equals("B")) {anderButton.doClick(300);inputLine = null;
                     } else if (inputLine.equals("D")) {exit.doClick(300);}
                     else if (inputLine.equals("C")) {returnButton.doClick(300);}
                 }
@@ -1216,8 +1248,8 @@ public class ReadCard implements SerialPortEventListener {
                 //Bevestig
                 if(pagina == "bevestigPage")
                 {
-                    if (inputLine.equals("A")) {jaBevestig.doClick(300);}
-                    else if (inputLine.equals("B")) {neeBevestig.doClick(300);}
+                    if (inputLine.equals("A")) {jaBevestig.doClick(300);inputLine = null;}
+                    else if (inputLine.equals("B")) {neeBevestig.doClick(300);inputLine = null;}
                     else if (inputLine.equals("D")) {exitBevestig.doClick(300);}
                 }
 
@@ -1245,7 +1277,7 @@ public class ReadCard implements SerialPortEventListener {
                     } else if (inputLine.equals("D")) {
                         exitAnder.doClick(300);
                     } else if (inputLine.equals("A")) {
-                        enterAnder.doClick(300);
+                        enterAnder.doClick(300);inputLine = null;
                     } else if (inputLine.equals("*")) nullmaker();
                     else if (anderField.getText().length() > 3) {
                         if (inputLine.equals("*")) {nullmaker();}
@@ -1258,8 +1290,8 @@ public class ReadCard implements SerialPortEventListener {
                 //bon page
                 if(pagina == "bonPage")
                 {
-                    if (inputLine.equals("A") && pagina == "bonPage") {jaBon.doClick(300);}
-                    else if (inputLine.equals("B") && pagina == "bonPage") {neeBon.doClick(300);}
+                    if (inputLine.equals("A") && pagina == "bonPage") {jaBon.doClick(300);inputLine = null;}
+                    else if (inputLine.equals("B") && pagina == "bonPage") {neeBon.doClick(300);inputLine = null;}
                 }
 
                 if(pagina != "ok")

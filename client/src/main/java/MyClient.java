@@ -32,7 +32,7 @@ public class MyClient {
     }
 
     public static void main(String[] args){
-        SwingUtilities.invokeLater(new Runnable()
+       /* SwingUtilities.invokeLater(new Runnable()
         {
 
             public void run()
@@ -40,7 +40,7 @@ public class MyClient {
                new ReadCard(8025);
             }
         });
-          MyClient client = new MyClient(8025);
+          MyClient client = new MyClient(8025);*/
 //           System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
 //        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.withdraw(request.getIBAN(), request.getAmount()).getNewSaldo() + " euro.");
 

@@ -2,8 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="615085ca-472a-462b-882d-7a4e189a0f18" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard.class" afterPath="$PROJECT_DIR$/client/target/classes/ReadCard.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/appframework-1.0.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/BuildProperties.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/Install.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/Readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/ReleaseNotes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/rxtxParallel.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/mfz-rxtx-2.2-20081207-win-x64/mfz-rxtx-2.2-20081207-win-x64/rxtxSerial.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/swing-layout-1.0.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/Extra_jar/swing-worker-1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/BuildProperties.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/Install.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/RXTXcomm.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/Readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/ReleaseNotes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/rxtxParallel.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/mfz-rxtx-2.2-20081207-win-x64/rxtxSerial.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Jars/org-jdesktop-layout.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/src/main/java/Mesoslogo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$11.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$12.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$13.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$14.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$15.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$16.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$17.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$18.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$19.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$20.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$21.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$22.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$23.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$24.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$25.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$26.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$27.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$28.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$timer$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard$timer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/ReadCard.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/MyClient.java" afterPath="$PROJECT_DIR$/client/src/main/java/MyClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/ReadCard.java" afterPath="$PROJECT_DIR$/client/src/main/java/ReadCard.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,45 +72,104 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MyClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/main/java/MyClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="50" column="89" lean-forward="false" selection-start-line="50" selection-start-column="89" selection-end-line="50" selection-end-column="89" />
+            <state relative-caret-position="306">
+              <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#MyClient#0;class#MyClient#0" expanded="false" />
-                <element signature="e#1183#1311#0" expanded="true" />
-                <element signature="e#1310#1311#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadCard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReadCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/main/java/ReadCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+            <state relative-caret-position="220">
+              <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
               <folding>
-                <element signature="e#0#49269#0" expanded="true" />
+                <element signature="e#0#50440#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="class#timer#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#4904#6553#0" expanded="true" />
+                <element signature="e#6552#6553#0" expanded="true" />
                 <element signature="method#ReadCard#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#initialize#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#nullmaker#0;class#ReadCard#0" expanded="false" />
                 <element signature="docComment;field#PORT_NAMES#0;class#ReadCard#0" expanded="false" />
-                <element signature="e#9091#9130#0" expanded="false" />
+                <element signature="e#9361#9400#0" expanded="false" />
                 <element signature="docComment;field#output#0;class#ReadCard#0" expanded="false" />
                 <element signature="docComment;field#TIME_OUT#0;class#ReadCard#0" expanded="false" />
-                <element signature="method#readFrame#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#14722#14943#0" expanded="true" />
+                <element signature="e#14942#14943#0" expanded="true" />
+                <element signature="e#14987#15123#0" expanded="true" />
+                <element signature="e#15066#15067#0" expanded="false" />
+                <element signature="e#15112#15113#0" expanded="false" />
+                <element signature="e#15122#15123#0" expanded="true" />
+                <element signature="e#15186#15547#0" expanded="true" />
+                <element signature="e#15546#15547#0" expanded="true" />
+                <element signature="e#15590#15951#0" expanded="true" />
+                <element signature="e#15950#15951#0" expanded="true" />
+                <element signature="e#16038#16331#0" expanded="true" />
+                <element signature="e#16330#16331#0" expanded="true" />
+                <element signature="e#16373#16744#0" expanded="true" />
+                <element signature="e#16743#16744#0" expanded="true" />
+                <element signature="e#16782#17666#0" expanded="true" />
+                <element signature="e#17665#17666#0" expanded="true" />
+                <element signature="e#17707#18510#0" expanded="true" />
+                <element signature="e#18509#18510#0" expanded="true" />
+                <element signature="e#18551#19355#0" expanded="true" />
+                <element signature="e#19354#19355#0" expanded="true" />
                 <element signature="method#okPanel#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#20108#20380#0" expanded="true" />
+                <element signature="e#20379#20380#0" expanded="true" />
+                <element signature="e#20421#20695#0" expanded="true" />
+                <element signature="e#20694#20695#0" expanded="true" />
                 <element signature="method#pinMaken#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#22042#23609#0" expanded="true" />
+                <element signature="e#23608#23609#0" expanded="true" />
+                <element signature="e#23646#23938#0" expanded="true" />
+                <element signature="e#23937#23938#0" expanded="true" />
                 <element signature="method#bonPrint#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#25078#25351#0" expanded="true" />
+                <element signature="e#25350#25351#0" expanded="true" />
+                <element signature="e#25387#25660#0" expanded="true" />
+                <element signature="e#25659#25660#0" expanded="true" />
                 <element signature="method#bevestiging#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#27035#27282#0" expanded="true" />
+                <element signature="e#27281#27282#0" expanded="true" />
+                <element signature="e#27324#27571#0" expanded="true" />
+                <element signature="e#27570#27571#0" expanded="true" />
+                <element signature="e#27612#28321#0" expanded="true" />
+                <element signature="e#28320#28321#0" expanded="true" />
                 <element signature="method#andereBedrag#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#30253#31903#0" expanded="true" />
+                <element signature="e#31902#31903#0" expanded="true" />
+                <element signature="e#31943#32337#0" expanded="true" />
+                <element signature="e#32336#32337#0" expanded="true" />
+                <element signature="e#32379#32773#0" expanded="true" />
+                <element signature="e#32772#32773#0" expanded="true" />
                 <element signature="method#keuzeBiljet#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#34385#34737#0" expanded="true" />
+                <element signature="e#34736#34737#0" expanded="true" />
+                <element signature="e#34775#35127#0" expanded="true" />
+                <element signature="e#35126#35127#0" expanded="true" />
+                <element signature="e#35165#35474#0" expanded="true" />
+                <element signature="e#35473#35474#0" expanded="true" />
+                <element signature="e#35516#35810#0" expanded="true" />
+                <element signature="e#35809#35810#0" expanded="true" />
+                <element signature="e#35850#36145#0" expanded="true" />
+                <element signature="e#36144#36145#0" expanded="true" />
+                <element signature="e#36639#36891#0" expanded="true" />
+                <element signature="e#36890#36891#0" expanded="true" />
                 <element signature="method#saldoWeergave#0;class#ReadCard#0" expanded="false" />
+                <element signature="e#38004#38231#0" expanded="true" />
+                <element signature="e#38230#38231#0" expanded="true" />
+                <element signature="e#38273#38460#0" expanded="true" />
+                <element signature="e#38459#38460#0" expanded="true" />
                 <element signature="method#checkBiljet#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#checkEental#0;class#ReadCard#0" expanded="false" />
                 <element signature="method#checkSaldo#0;class#ReadCard#0" expanded="false" />
@@ -75,17 +185,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mesoslogo.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/Mesoslogo.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Databaseimpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/hro/rick/mesosbank/server/Databaseimpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="884">
               <caret line="52" column="37" lean-forward="false" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
               <folding>
                 <element signature="method#withdraw#0;class#Databaseimpl#0" expanded="false" />
@@ -99,9 +202,11 @@
       <file leaf-file-name="BankEndpoint.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/hro/rick/mesosbank/server/BankEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="527">
               <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,7 +254,7 @@
       <file leaf-file-name="PinAuthenticatieResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="238">
               <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding>
                 <element signature="e#358#359#0" expanded="true" />
@@ -162,7 +267,7 @@
       <file leaf-file-name="WithdrawResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/WithdrawResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="306">
               <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
               <folding>
                 <element signature="e#691#692#0" expanded="true" />
@@ -195,6 +300,10 @@
       <find>.getIBAN()</find>
       <find>logo</find>
       <find>logoLabel</find>
+      <find>buttonPanel</find>
+      <find>scan</find>
+      <find>returnKeuze</find>
+      <find>homebutton</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -233,8 +342,8 @@
         <option value="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/AuthenticatieResponse.java" />
         <option value="$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/App.java" />
-        <option value="$PROJECT_DIR$/client/src/main/java/MyClient.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/ReadCard.java" />
+        <option value="$PROJECT_DIR$/client/src/main/java/MyClient.java" />
       </list>
     </option>
   </component>
@@ -294,7 +403,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -438,7 +547,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -449,7 +558,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Project-4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Project-4" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -804,41 +913,40 @@
     <option name="totallyTimeSpent" value="92424000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40486258" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4038055" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3488372" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3551797" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10104167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -903,7 +1011,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -949,14 +1059,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml" />
     <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/hro/rick/mesosbank/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -968,7 +1071,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,14 +1129,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/JsonProperty.java" />
     <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/WithdrawRespone.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml" />
     <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar!/javax/ws/rs/PathParam.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1143,7 +1241,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/WithdrawResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="306">
           <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
           <folding>
             <element signature="e#691#692#0" expanded="true" />
@@ -1157,17 +1255,19 @@
         <state relative-caret-position="306">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#165#294#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
+            <element signature="e#165#294#0" expanded="false" />
+            <element signature="e#293#294#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/hro/rick/mesosbank/server/BankEndpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="527">
           <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,7 +1292,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/nl/hro/rick/mesosbank/server/Databaseimpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="884">
           <caret line="52" column="37" lean-forward="false" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
           <folding>
             <element signature="method#withdraw#0;class#Databaseimpl#0" expanded="false" />
@@ -1204,7 +1304,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/src/main/java/nl/hro/rick/mesosbank/api/PinAuthenticatieResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="238">
           <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
             <element signature="e#358#359#0" expanded="true" />
@@ -1228,19 +1328,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/MyClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="50" column="89" lean-forward="false" selection-start-line="50" selection-start-column="89" selection-end-line="50" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#MyClient#0;class#MyClient#0" expanded="false" />
-            <element signature="e#1183#1311#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/Mesoslogo.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1248,27 +1335,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/ReadCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+        <state relative-caret-position="220">
+          <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
           <folding>
-            <element signature="e#0#49269#0" expanded="true" />
+            <element signature="e#0#50440#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="class#timer#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#4904#6553#0" expanded="true" />
+            <element signature="e#6552#6553#0" expanded="true" />
             <element signature="method#ReadCard#0;class#ReadCard#0" expanded="false" />
             <element signature="method#initialize#0;class#ReadCard#0" expanded="false" />
             <element signature="method#nullmaker#0;class#ReadCard#0" expanded="false" />
             <element signature="docComment;field#PORT_NAMES#0;class#ReadCard#0" expanded="false" />
-            <element signature="e#9091#9130#0" expanded="false" />
+            <element signature="e#9361#9400#0" expanded="false" />
             <element signature="docComment;field#output#0;class#ReadCard#0" expanded="false" />
             <element signature="docComment;field#TIME_OUT#0;class#ReadCard#0" expanded="false" />
-            <element signature="method#readFrame#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#14722#14943#0" expanded="true" />
+            <element signature="e#14942#14943#0" expanded="true" />
+            <element signature="e#14987#15123#0" expanded="true" />
+            <element signature="e#15066#15067#0" expanded="false" />
+            <element signature="e#15112#15113#0" expanded="false" />
+            <element signature="e#15122#15123#0" expanded="true" />
+            <element signature="e#15186#15547#0" expanded="true" />
+            <element signature="e#15546#15547#0" expanded="true" />
+            <element signature="e#15590#15951#0" expanded="true" />
+            <element signature="e#15950#15951#0" expanded="true" />
+            <element signature="e#16038#16331#0" expanded="true" />
+            <element signature="e#16330#16331#0" expanded="true" />
+            <element signature="e#16373#16744#0" expanded="true" />
+            <element signature="e#16743#16744#0" expanded="true" />
+            <element signature="e#16782#17666#0" expanded="true" />
+            <element signature="e#17665#17666#0" expanded="true" />
+            <element signature="e#17707#18510#0" expanded="true" />
+            <element signature="e#18509#18510#0" expanded="true" />
+            <element signature="e#18551#19355#0" expanded="true" />
+            <element signature="e#19354#19355#0" expanded="true" />
             <element signature="method#okPanel#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#20108#20380#0" expanded="true" />
+            <element signature="e#20379#20380#0" expanded="true" />
+            <element signature="e#20421#20695#0" expanded="true" />
+            <element signature="e#20694#20695#0" expanded="true" />
             <element signature="method#pinMaken#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#22042#23609#0" expanded="true" />
+            <element signature="e#23608#23609#0" expanded="true" />
+            <element signature="e#23646#23938#0" expanded="true" />
+            <element signature="e#23937#23938#0" expanded="true" />
             <element signature="method#bonPrint#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#25078#25351#0" expanded="true" />
+            <element signature="e#25350#25351#0" expanded="true" />
+            <element signature="e#25387#25660#0" expanded="true" />
+            <element signature="e#25659#25660#0" expanded="true" />
             <element signature="method#bevestiging#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#27035#27282#0" expanded="true" />
+            <element signature="e#27281#27282#0" expanded="true" />
+            <element signature="e#27324#27571#0" expanded="true" />
+            <element signature="e#27570#27571#0" expanded="true" />
+            <element signature="e#27612#28321#0" expanded="true" />
+            <element signature="e#28320#28321#0" expanded="true" />
             <element signature="method#andereBedrag#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#30253#31903#0" expanded="true" />
+            <element signature="e#31902#31903#0" expanded="true" />
+            <element signature="e#31943#32337#0" expanded="true" />
+            <element signature="e#32336#32337#0" expanded="true" />
+            <element signature="e#32379#32773#0" expanded="true" />
+            <element signature="e#32772#32773#0" expanded="true" />
             <element signature="method#keuzeBiljet#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#34385#34737#0" expanded="true" />
+            <element signature="e#34736#34737#0" expanded="true" />
+            <element signature="e#34775#35127#0" expanded="true" />
+            <element signature="e#35126#35127#0" expanded="true" />
+            <element signature="e#35165#35474#0" expanded="true" />
+            <element signature="e#35473#35474#0" expanded="true" />
+            <element signature="e#35516#35810#0" expanded="true" />
+            <element signature="e#35809#35810#0" expanded="true" />
+            <element signature="e#35850#36145#0" expanded="true" />
+            <element signature="e#36144#36145#0" expanded="true" />
+            <element signature="e#36639#36891#0" expanded="true" />
+            <element signature="e#36890#36891#0" expanded="true" />
             <element signature="method#saldoWeergave#0;class#ReadCard#0" expanded="false" />
+            <element signature="e#38004#38231#0" expanded="true" />
+            <element signature="e#38230#38231#0" expanded="true" />
+            <element signature="e#38273#38460#0" expanded="true" />
+            <element signature="e#38459#38460#0" expanded="true" />
             <element signature="method#checkBiljet#0;class#ReadCard#0" expanded="false" />
             <element signature="method#checkEental#0;class#ReadCard#0" expanded="false" />
             <element signature="method#checkSaldo#0;class#ReadCard#0" expanded="false" />
@@ -1279,6 +1427,17 @@
             <element signature="method#withdraw#0;class#ReadCard#0" expanded="false" />
             <element signature="method#authenticatie#0;class#ReadCard#0" expanded="false" />
             <element signature="method#pinAuthenticatie#0;class#ReadCard#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main/java/MyClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#MyClient#0;class#MyClient#0" expanded="false" />
           </folding>
         </state>
       </provider>
