@@ -31,11 +31,6 @@
             <artifactId>jersey-client</artifactId>
             <version>2.25.1</version>
         </dependency>
-        <dependency>
-            <groupId>nl.hro.0928370.2017</groupId>
-            <artifactId>server</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 
 </project>

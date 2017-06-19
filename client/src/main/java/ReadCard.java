@@ -2,25 +2,22 @@
 /**
  * Created by shing on 28-3-2017.
  */
-import gnu.io.*;
-import nl.hro.rick.mesosbank.api.*;
-import org.glassfish.jersey.jackson.JacksonFeature;
+        import gnu.io.*;
+        import nl.hro.rick.mesosbank.api.*;
+        import org.glassfish.jersey.jackson.JacksonFeature;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.DatatypeConverter;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.io.*;
-import java.util.Enumeration;
-import java.util.concurrent.TimeUnit;
+        import javax.swing.*;
+        import java.awt.*;
+        import java.awt.event.*;
+        import javax.ws.rs.client.Client;
+        import javax.ws.rs.client.ClientBuilder;
+        import javax.ws.rs.client.WebTarget;
+        import javax.ws.rs.core.MediaType;
+        import java.util.Timer;
+        import java.util.TimerTask;
+        import java.io.*;
+        import java.util.Enumeration;
+        import java.util.concurrent.TimeUnit;
 
 public class ReadCard implements SerialPortEventListener {
     private CardLayout cardTest = new CardLayout();
@@ -60,6 +57,7 @@ public class ReadCard implements SerialPortEventListener {
     static JPanel saldoBottom = new JPanel();
     JButton exitSaldo = new JButton("Exit[D]");
     JButton returnSaldo = new JButton("Return[C]");
+    JLabel huidigeSaldo = new JLabel();
 
     //fourth panel ander weergeven
     static JPanel anderTop = new JPanel();
@@ -108,19 +106,15 @@ public class ReadCard implements SerialPortEventListener {
     JButton exitKeuze = new JButton("Exit[D]");
 
     ImageIcon logo = new ImageIcon("Mesoslogo.jpg");
-<<<<<<< HEAD
-
-=======
     ImageIcon logoBevestig = new ImageIcon("Bevestigtemp.jpg");
->>>>>>> origin/master
+
     ImageIcon logoeind = new ImageIcon("Eindlogo.jpg");
 
     JLabel logoLabelhome = new JLabel(logo);
     JLabel logoLabelmenu = new JLabel(logo);
-<<<<<<< HEAD
-=======
+
     JLabel logoLabelok = new JLabel(logoBevestig);
->>>>>>> origin/master
+
     JLabel logoLabelEnd = new JLabel(logoeind);
 
     JLabel geldBevestiging = new JLabel(); //Tekst voor de hoeveelheid opnemen van de user
@@ -198,17 +192,19 @@ public class ReadCard implements SerialPortEventListener {
 
     static private Client client;
     private WebTarget target;
-    private String ID = "MESO0915328";
+    private String ID = "";
     private  String validate = "/validate/";
     private  String validatePin = "/validatePin/";
     private  String pincode = "/";
     private String UID = "/";
+    private String IDUID;
     private  String balance = "/balance/";
     private String amountMoney ="/0";
     static WithdrawRequest request = new WithdrawRequest();
     static BalanceResponse balanceRequest = new BalanceResponse();
     static PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
     static AuthenticatieResponse validPas = new AuthenticatieResponse();
+    static idresponse response = new idresponse();
     static long s;
 
     private void initialize() {
@@ -441,11 +437,14 @@ public class ReadCard implements SerialPortEventListener {
         //Jbutton gelinked aan saldo weergave
         saldoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
+                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
+
+                huidigeSaldo.setText("Uw huidige saldo is " + saldo + " euro");
+
                 cardTest.show(mainPanel, "saldoPage");
                 pagina = "saldoPage";
                 blankLabel.setText(".");
                 blankLabel.setForeground(Color.BLACK);
-                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
             }
         });
 
@@ -462,6 +461,7 @@ public class ReadCard implements SerialPortEventListener {
         tienEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 int a = 10;
+                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
                 amountMoney = ("/10");
                 if(a> saldo) //Saldo controleren op genoeg saldo, als de gewenste bedrag is ingevoerd.
                 {
@@ -483,6 +483,7 @@ public class ReadCard implements SerialPortEventListener {
         twintigEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 a = 20;
+                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
                 amountMoney = ("/20");
                 if(a> saldo)
                 {
@@ -503,6 +504,7 @@ public class ReadCard implements SerialPortEventListener {
         vijftigEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 a = 50;
+                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
                 amountMoney = ("/50");
                 if(a> saldo)
                 {
@@ -775,7 +777,7 @@ public class ReadCard implements SerialPortEventListener {
         JPanel anderPage = new JPanel();
         JLabel titleAnder = new JLabel("Mesosbank custom bedrag");
         JLabel textAnder = new JLabel("Voer uw bedrag in:");
-        final JLabel textVoorbeeld = new JLabel("Geen bedragen met eenheden(1, 12, 23 etc.)");
+        final JLabel textVoorbeeld = new JLabel("Alleen tientallen invoeren");
         textAnder.setFont(typecharacters);
         titleAnder.setFont(typecharacters);
         enterAnder.setFont(typecharacters);
@@ -824,7 +826,7 @@ public class ReadCard implements SerialPortEventListener {
                 if(checkEental() == false) //controle voor eenheden bij ander bedragen
                 {
                     textVoorbeeld.setForeground(Color.RED);
-                    textVoorbeeld.setText("Geen bedragen met eenheden(1, 12, 23 etc.)");
+                    textVoorbeeld.setText("Alleen tientallen invoeren!");
 
                 }
                 else if(checkLimiet() == true) //controle voor eenheden bij ander bedragen
@@ -844,7 +846,7 @@ public class ReadCard implements SerialPortEventListener {
                     {
                         amountMoney = ("/"+anderField.getText());
                         cardTest.show(mainPanel, "keuze");
-                        textVoorbeeld.setText("Geen bedragen met eenheden(1, 12, 23 etc.)");
+                        textVoorbeeld.setText("Alleen tientallen invoeren");
                         textVoorbeeld.setForeground(Color.black);
                         pagina = "keuze";
                         checkBiljet();
@@ -865,7 +867,7 @@ public class ReadCard implements SerialPortEventListener {
                 anderField.setText("0");
                 a = 0;
                 pagina = "home";
-                textVoorbeeld.setText("Geen bedragen met eenheden(1, 12, 23 etc.)");
+                textVoorbeeld.setText("Alleen tientallen invoeren");
                 textVoorbeeld.setForeground(Color.black);
             }
         });
@@ -876,7 +878,7 @@ public class ReadCard implements SerialPortEventListener {
                 anderField.setText("0");
                 a = 0;
                 pagina = "menu";
-                textVoorbeeld.setText("Geen bedragen met eenheden(1, 12, 23 etc.)");
+                textVoorbeeld.setText("Alleen tientallen invoeren");
                 textVoorbeeld.setForeground(Color.black);
             }
         });
@@ -1006,7 +1008,6 @@ public class ReadCard implements SerialPortEventListener {
         JLabel titleSaldo = new JLabel("Mesosbank saldoweergave");
         titleSaldo.setFont(typecharacters);
         GridBagConstraints gbc = new GridBagConstraints();
-        JLabel huidigeSaldo = new JLabel("Uw huidige saldo is " + saldo + " euro");
         huidigeSaldo.setFont(typecharacters);
         returnSaldo.setPreferredSize(new Dimension(200, 50));
         returnSaldo.setFont(typecharacters);
@@ -1069,6 +1070,12 @@ public class ReadCard implements SerialPortEventListener {
                 button50.setText(String.valueOf(check50) + "x €50[3]");
             }
         }
+        else if(getal >490 && remainder50 == 0)
+        {
+            button10.setText(String.valueOf(check10)+"x €10[1]");
+            button20.setText(String.valueOf(check20) + "x €20[2]");
+            button50.setText(String.valueOf(check50) + "x €50[3]");
+        }
         else if(getal >50 && remainder50 == 0)
         {
             button10.setText(String.valueOf(check10)+"x €10[1]");
@@ -1078,7 +1085,7 @@ public class ReadCard implements SerialPortEventListener {
         else if(getal >50 && remainder50 == 10)
         {
             button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText("1x €10 "+ String.valueOf(check20) + "x €20[2]");
+            button20.setText(String.valueOf(check20) + "x €20[2]");
             button50.setText("1x €10 "+ String.valueOf(check50) + "x €50[3]");
         }
         else if(getal >50 && remainder50 == 20 || remainder50 == 40)
@@ -1174,11 +1181,12 @@ public class ReadCard implements SerialPortEventListener {
 
     private boolean checkPassword()
     {
+        //ID = response.getCurrentID();
         String pinPassword = new String();
-         pinPassword = String.valueOf(pinField.getPassword());
+        pinPassword = String.valueOf(pinField.getPassword());
         pincode = ("/"+pinPassword);
         boolean checkPassword;
-        if( pinAuthenticatie(balanceRequest.getRekeningNummer(),pincode).isPinCorrect() == true)
+        if( pinAuthenticatie(ID,pincode).isPinCorrect() == true)
         {
             System.out.println("Pass werkt");
             checkPassword = false;
@@ -1192,7 +1200,6 @@ public class ReadCard implements SerialPortEventListener {
         }
     }
 
-
     ///////////////////// serialprinlnt + input van button een functie toewijzen.
     public void serialEvent(SerialPortEvent spe) {
         if (spe.getEventType() == SerialPortEvent.DATA_AVAILABLE)
@@ -1201,24 +1208,26 @@ public class ReadCard implements SerialPortEventListener {
             {
                 byte[] readBuffer = new byte[40];
                 String inputLine = input.readLine();
-                System.out.println(inputLine);
-
-            /*     String bankId = inputLine2.substring(0,33);
-                  System.out.println(bankId);
-
-                String UID = inputLine.substring(33,45);
-                System.out.println(UID);*/
+                //System.out.println(inputLine);
 
                 //home scan page
                 if(pagina == "home")
                 {
-                    UID = ("/"+inputLine);
-                    boolean checkID = authenticatie(UID,balanceRequest.getRekeningNummer()).getPasExist();
+
+                    String bankId = inputLine.substring(0,22);
+                    System.out.println(bankId);
+                    ID = (bankId);
+
+                    String UID = inputLine.substring(22,31);
+                    System.out.println(UID);
+                    boolean checkID = authenticatie(UID,ID).getPasExist();
+
                     if (inputLine.equals("D")) {
                         sluitprogramma.doClick(400);
                     }
                     else if (checkID == true)
                     {scan.doClick(300);
+                    
                         System.out.println(" scan worked");
                         secondsAll = 0;inputLine = null;
                         return;
@@ -1321,6 +1330,7 @@ public class ReadCard implements SerialPortEventListener {
     }
 
     public BalanceResponse balance(String IBAN, long amount) {
+
         BalanceResponse response = target
                 .path(balance + ID)
                 .request(MediaType.APPLICATION_JSON)
@@ -1331,6 +1341,7 @@ public class ReadCard implements SerialPortEventListener {
     }
 
     public WithdrawResponse withdraw(String IBAN, Long amount) {
+
         WithdrawResponse response = target
                 .path("/withdraw/"+ID+ amountMoney)
                 .request()
@@ -1340,8 +1351,9 @@ public class ReadCard implements SerialPortEventListener {
     }
 
     public AuthenticatieResponse authenticatie(String UID, String rekeningNr) {
+
         AuthenticatieResponse response = target
-                .path(validate + ID + UID)
+                .path(validate + ID +UID)
                 .request(MediaType.APPLICATION_JSON)
                 .get(AuthenticatieResponse.class);
 
@@ -1349,6 +1361,7 @@ public class ReadCard implements SerialPortEventListener {
     }
 
     public PinAuthenticatieResponse pinAuthenticatie(String rekeningNr, String pincode) {
+
         PinAuthenticatieResponse response = target
                 .path(validatePin + ID + pincode)
                 .request(MediaType.APPLICATION_JSON)
@@ -1357,5 +1370,3 @@ public class ReadCard implements SerialPortEventListener {
         return response;
     }
 }
-
-

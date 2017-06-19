@@ -1,32 +1,39 @@
 
+
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+import gnu.io.SerialPortEventListener;
 import nl.hro.rick.mesosbank.api.*;
-import nl.hro.rick.mesosbank.server.Databaseimpl;
+
 import org.glassfish.jersey.jackson.JacksonFeature;
+
 import javax.swing.*;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
+import java.awt.*;
+import java.io.*;
+import java.rmi.server.UID;
+import java.util.Enumeration;
 
 /**
  * Created by rick on 24-03-17.
  */
 public class MyClient {
-
-    static private Client client;
+   static private Client client;
     private WebTarget target;
-    private static String ID = "";
+    private static String ID = "MESO0915328";
     private static String validate = "/validate/";
     private static String validatePin = "/validatePin/";
     private static String pincode = "/2222";
-    private static String UID = "/ 94 f7 d4 5f";
+    private static String UID = "/94 F7 D4 5F";
     private static String balance = "/balance/";
     private static String amountMoney = "/10";
     static WithdrawRequest request = new WithdrawRequest();
     static BalanceResponse balanceRequest = new BalanceResponse();
     static PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
     static AuthenticatieResponse validPas = new AuthenticatieResponse();
-
-
     static long s;
+    private static CardLayout cardTest = new CardLayout();
 
     public MyClient(int port) {
         client = ClientBuilder.newClient().register(JacksonFeature.class);
@@ -35,33 +42,22 @@ public class MyClient {
     }
 
     public static void main(String[] args){
-<<<<<<< HEAD
 
         SwingUtilities.invokeLater(new Runnable()
-=======
-       /* SwingUtilities.invokeLater(new Runnable()
->>>>>>> origin/master
         {
 
             public void run()
             {
-               new ReadCard(8025);
+                new ReadCard(8025);
             }
         });
-<<<<<<< HEAD
-          //MyClient client = new MyClient(8025);
-//        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
-=======
-          MyClient client = new MyClient(8025);*/
-//           System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
->>>>>>> origin/master
+//        MyClient client = new MyClient(8025);
+         //  System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
 //        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.withdraw(request.getIBAN(), request.getAmount()).getNewSaldo() + " euro.");
-//        System.out.println(client.balance(request.getIBAN(), request.getAmount()).getRekeningNummer());
-//        System.out.println(client.authenticatie(UID,balanceRequest.getRekeningNummer()))
-//  System.out.println(client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer());
-        //System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
-//        System.out.println(client.pinAuthenticatie(balanceRequest.getRekeningNummer(),pincode).isPinCorrect());
+//        System.out.println(client.authenticatie(UID,request.getIBAN()));
+//        System.out.println(client.pinAuthenticatie(request.getIBAN(),pincode));
     }
+
 
 
     public BalanceResponse balance(String IBAN, long amount) {
@@ -73,6 +69,7 @@ public class MyClient {
 
         return response;
     }
+
 
     public WithdrawResponse withdraw(String IBAN, Long amount) {
         WithdrawResponse response = target
@@ -100,7 +97,6 @@ public class MyClient {
 
         return response;
     }
-
 
 
 }
