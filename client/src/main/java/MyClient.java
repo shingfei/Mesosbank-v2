@@ -1,5 +1,6 @@
 
 import nl.hro.rick.mesosbank.api.*;
+import nl.hro.rick.mesosbank.server.Databaseimpl;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import javax.swing.*;
 import javax.ws.rs.client.*;
@@ -12,7 +13,7 @@ public class MyClient {
 
     static private Client client;
     private WebTarget target;
-    private String ID = "";
+    private static String ID = "";
     private static String validate = "/validate/";
     private static String validatePin = "/validatePin/";
     private static String pincode = "/2222";
@@ -23,6 +24,8 @@ public class MyClient {
     static BalanceResponse balanceRequest = new BalanceResponse();
     static PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
     static AuthenticatieResponse validPas = new AuthenticatieResponse();
+
+
     static long s;
 
     public MyClient(int port) {
@@ -32,6 +35,7 @@ public class MyClient {
     }
 
     public static void main(String[] args){
+
         SwingUtilities.invokeLater(new Runnable()
         {
 
@@ -40,20 +44,15 @@ public class MyClient {
                new ReadCard(8025);
             }
         });
-          MyClient client = new MyClient(8025);
-//           System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
+          //MyClient client = new MyClient(8025);
+//        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
 //        System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.withdraw(request.getIBAN(), request.getAmount()).getNewSaldo() + " euro.");
-
 //        System.out.println(client.balance(request.getIBAN(), request.getAmount()).getRekeningNummer());
-//        System.out.println(client.authenticatie(UID,balanceRequest.getRekeningNummer()).getPasExist());
-
-      //  System.out.println(client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer());
-       // ID = client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer();
-      //  System.out.println(ID);
+//        System.out.println(client.authenticatie(UID,balanceRequest.getRekeningNummer()))
+//  System.out.println(client.balance(request.getIBAN(),request.getAmount()).getRekeningNummer());
         //System.out.println("Saldo op rekening nummer "+ID+ " heeft " +client.balance(request.getIBAN(),request.getAmount()).getBalance()+" euro.");
 //        System.out.println(client.pinAuthenticatie(balanceRequest.getRekeningNummer(),pincode).isPinCorrect());
     }
-
 
 
     public BalanceResponse balance(String IBAN, long amount) {
