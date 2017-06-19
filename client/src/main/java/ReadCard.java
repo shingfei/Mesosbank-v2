@@ -108,11 +108,19 @@ public class ReadCard implements SerialPortEventListener {
     JButton exitKeuze = new JButton("Exit[D]");
 
     ImageIcon logo = new ImageIcon("Mesoslogo.jpg");
+<<<<<<< HEAD
 
+=======
+    ImageIcon logoBevestig = new ImageIcon("Bevestigtemp.jpg");
+>>>>>>> origin/master
     ImageIcon logoeind = new ImageIcon("Eindlogo.jpg");
 
     JLabel logoLabelhome = new JLabel(logo);
     JLabel logoLabelmenu = new JLabel(logo);
+<<<<<<< HEAD
+=======
+    JLabel logoLabelok = new JLabel(logoBevestig);
+>>>>>>> origin/master
     JLabel logoLabelEnd = new JLabel(logoeind);
 
     JLabel geldBevestiging = new JLabel(); //Tekst voor de hoeveelheid opnemen van de user
@@ -530,13 +538,7 @@ public class ReadCard implements SerialPortEventListener {
         homeButton.setFont(typecharacters);
         homeButton.setPreferredSize(new Dimension(200, 100));
 
-        buttonokpanel.add(okLabel,gbc);
-        gbc.gridx = 0;
-        gbc.gridy = 50;
-        buttonokpanel.add(okButton,gbc);
-        gbc.gridx = 200;
-        gbc.gridy = 50;
-        buttonokpanel.add(homeButton,gbc);
+        buttonokpanel.add(logoLabelok,gbc);
 
         okPanel.add(buttonokpanel,BorderLayout.CENTER);
         okPanel.add(oktopPanel, BorderLayout.NORTH);
