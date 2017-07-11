@@ -3,30 +3,28 @@ package nl.hro.rick.mesosbank.api;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
- * Created by Rick on 4-4-2017.
+ * Created by SF on 8-7-2017.
  */
-public class BalanceResponse
+public class AuthenticatieRequest
 {
     @JsonProperty
-    private long balans;
+    private String uid;
+
     @JsonProperty
     private String iban;
-
-
-    public void setBalans(long balans) {
-        this.balans = balans;
-    }
-
-    public long getBalans() {
-        return balans;
-    }
-
     public String getIban() {
         return iban;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public void setIban(String iban) {
         this.iban = iban;
     }
-}
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+}

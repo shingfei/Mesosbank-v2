@@ -8,25 +8,21 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class WithdrawResponse
 {
     @JsonProperty
-    private String response;
+    private boolean response;
     @JsonProperty
     private long newSaldo;
+    @JsonProperty
+    private long bedragGepint;
+    @JsonProperty
+    private String iban;
 
-    public WithdrawResponse() {
-    }
 
-    public WithdrawResponse(String response, long newSaldo) {
+    public void setResponse(boolean response) {
         this.response = response;
-        this.newSaldo = newSaldo;
-
     }
 
-    public String getResponse() {
+    public boolean isResponse() {
         return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
     }
 
     public long getNewSaldo() {
@@ -35,5 +31,26 @@ public class WithdrawResponse
 
     public void setNewSaldo(long newSaldo) {
         this.newSaldo = newSaldo;
+    }
+
+    public void setBedragGepint(long bedragGepint) {
+        this.bedragGepint = bedragGepint;
+    }
+
+    public long getBedragGepint() {
+        return bedragGepint;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -8,15 +8,15 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class WithdrawRequest
 {
     @JsonProperty
-    private String IBAN;
+    private String iban;
     @JsonProperty
     private long amount;
 
     public WithdrawRequest() {
     }
 
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
+    public void setIBAN(String iban) {
+        this.iban = iban;
     }
 
     public void setAmount(long amount) {
@@ -24,7 +24,7 @@ public class WithdrawRequest
     }
 
     public String getIBAN() {
-        return IBAN;
+        return iban;
     }
 
     public long getAmount() {

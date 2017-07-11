@@ -1,5 +1,7 @@
-C:\Users\Rick\IdeaProjects\Mesosbank v2\api\src\main\java\nl\hro\rick\mesosbank\api\WithdrawResponse.java
-C:\Users\Rick\IdeaProjects\Mesosbank v2\api\src\main\java\nl\hro\rick\mesosbank\api\BalanceResponse.java
-C:\Users\Rick\IdeaProjects\Mesosbank v2\api\src\main\java\nl\hro\rick\mesosbank\api\PinAuthenticatieResponse.java
-C:\Users\Rick\IdeaProjects\Mesosbank v2\api\src\main\java\nl\hro\rick\mesosbank\api\WithdrawRequest.java
-C:\Users\Rick\IdeaProjects\Mesosbank v2\api\src\main\java\nl\hro\rick\mesosbank\api\AuthenticatieResponse.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\AuthenticatieResponse.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\PinAuthenticatieResponse.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\AuthenticatieRequest.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\BalanceResponse.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\WithdrawResponse.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\WithdrawRequest.java
+C:\Users\SF\Desktop\Mesosbank-v2\api\src\main\java\nl\hro\rick\mesosbank\api\PinAuthenticatieRequest.java

@@ -7,17 +7,35 @@ import org.codehaus.jackson.annotate.JsonProperty;
  */
 public class PinAuthenticatieResponse {
     @JsonProperty
-    private boolean pinCorrect;
+    private boolean pin;
 
+    @JsonProperty
+    private int failedAttemps;
 
-    public PinAuthenticatieResponse(boolean pinCorrect) {
-        this.pinCorrect = pinCorrect;
+    @JsonProperty
+    private int geblokeerdpas;
+
+    public int getFailedAttemps() {
+        return failedAttemps;
     }
 
-    public boolean isPinCorrect() {
-        return pinCorrect;
+    public void setFailedAttemps(int failedAttemps) {
+        this.failedAttemps = failedAttemps;
     }
 
-    public PinAuthenticatieResponse() {
+    public int getGeblokeerdpas() {
+        return geblokeerdpas;
+    }
+
+    public void setGeblokeerdpas(int geblokeerdpas) {
+        this.geblokeerdpas = geblokeerdpas;
+    }
+
+    public boolean isPin() {
+        return pin;
+    }
+
+    public void setPin(boolean pin) {
+        this.pin = pin;
     }
 }
