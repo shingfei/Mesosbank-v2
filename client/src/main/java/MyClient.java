@@ -19,7 +19,7 @@ import java.util.Enumeration;
  * Created by rick on 24-03-17.
  */
 public class MyClient {
-   static private Client client;
+   /*static private Client client;
     private WebTarget target;
     private static String ID = "MESO0915328";
     private static String validate = "/validate/";
@@ -39,7 +39,7 @@ public class MyClient {
         client = ClientBuilder.newClient().register(JacksonFeature.class);
         target = client.target("http://145.24.222.79:" + port);
 
-    }
+    }*/
 
     public static void main(String[] args){
 
@@ -59,7 +59,7 @@ public class MyClient {
     }
 
 
-
+/*
     public BalanceResponse balance(String IBAN, long amount) {
         BalanceResponse response = target
                 .path(balance + ID)
@@ -96,7 +96,7 @@ public class MyClient {
                 .get(PinAuthenticatieResponse.class);
 
         return response;
-    }
+    }*/
 
 
 }

@@ -11,6 +11,7 @@
         import java.awt.event.*;
         import javax.ws.rs.client.Client;
         import javax.ws.rs.client.ClientBuilder;
+        import javax.ws.rs.client.Entity;
         import javax.ws.rs.client.WebTarget;
         import javax.ws.rs.core.MediaType;
         import java.util.Timer;
@@ -21,9 +22,16 @@
 
 public class ReadCard implements SerialPortEventListener {
     private CardLayout cardTest = new CardLayout();
-
+    int biljet10 = 10;
+    int biljet20 = 10;
+    int biljet50 = 10;
+    int hoeveelheid10;
+    int hoeveelheid20;
+    int hoeveelheid50;
     String pagina; //Elk panel binden aan een pagina
+
     //First panel
+    JLabel title = new JLabel("Welkom bij Mesosbank, Scan uw kaart");
     JButton scan = new JButton("Scan uw kaart");
     JButton sluitprogramma = new JButton("Exit program");
     static JPanel mainPanel = new JPanel();
@@ -119,12 +127,12 @@ public class ReadCard implements SerialPortEventListener {
 
     JLabel geldBevestiging = new JLabel(); //Tekst voor de hoeveelheid opnemen van de user
     long saldo; // saldo van de user
-    int a; // variable voor input geld.
+    long inputgeld; // variable voor input geld.
     int kansen; //aantal pin kansen
     int secondsAll; // timer voor elk panel
     int secondsPin; // timer voor pinnen
     boolean checkLimiet; //limiet voor saldo
-
+    static String adress;
     timer timerCounter = new timer();
 
 
@@ -182,24 +190,23 @@ public class ReadCard implements SerialPortEventListener {
             timer.scheduleAtFixedRate(task, 1000, 1000);
         }
     }
-
+//http://77.164.29.183
+    //http://145.24.222.79:
     public ReadCard(int port) {
         client = ClientBuilder.newClient().register(JacksonFeature.class);
-        target = client.target("http://145.24.222.79:" + port);
+       // target =client.target("http://77.164.29.183");
+        target = client.target(innerIP);
         readFrame();
         timerCounter.start();
     }
 
     static private Client client;
+    private String outerIP = ("http://77.164.29.183");
+    private String innerIP = ("http://145.24.222.79:"+ 8025);
     private WebTarget target;
-    private String ID = "";
-    private  String validate = "/validate/";
-    private  String validatePin = "/validatePin/";
-    private  String pincode = "/";
-    private String UID = "/";
-    private String IDUID;
-    private  String balance = "/balance/";
-    private String amountMoney ="/0";
+    private String ID;
+    private String uid;
+    private  String iban;
     static WithdrawRequest request = new WithdrawRequest();
     static BalanceResponse balanceRequest = new BalanceResponse();
     static PinAuthenticatieResponse pinresponse = new PinAuthenticatieResponse();
@@ -258,7 +265,7 @@ public class ReadCard implements SerialPortEventListener {
     private static final String PORT_NAMES[] = {
             // "/dev/tty.usbmodem1d11", // Mac OS X
             //"/dev/ttyUSB0", // Linux
-            "COM3", "COM4", "COM5" // Windows
+            "COM2","COM3", "COM4", "COM5","COM6","COM0","COM1","COM7","COM8","COM9","COM10" // Windows
     };
 
     private BufferedReader input;
@@ -292,7 +299,7 @@ public class ReadCard implements SerialPortEventListener {
         GridBagConstraints gbc = new GridBagConstraints();
         scan.setFont(typecharacters);
         scan.setPreferredSize(new Dimension(400, 100));
-        JLabel title = new JLabel("Welkom bij Mesosbank, Scan uw kaart");
+
 
         title.setFont(typecharacters);
         //titlePanel.add(title);
@@ -437,8 +444,8 @@ public class ReadCard implements SerialPortEventListener {
         //Jbutton gelinked aan saldo weergave
         saldoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
-
+                BalanceResponse balanceResponse = balance(iban);
+                saldo = balanceResponse.getBalans();
                 huidigeSaldo.setText("Uw huidige saldo is " + saldo + " euro");
 
                 cardTest.show(mainPanel, "saldoPage");
@@ -452,6 +459,8 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "anderPage");
                 pagina = "anderPage";
+                BalanceResponse balanceResponse = balance(iban);
+                saldo = balanceResponse.getBalans();
                 blankLabel.setText(".");
                 blankLabel.setForeground(Color.BLACK);
                 anderField.setText("");
@@ -460,65 +469,86 @@ public class ReadCard implements SerialPortEventListener {
         });
         tienEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                int a = 10;
-                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
-                amountMoney = ("/10");
-                if(a> saldo) //Saldo controleren op genoeg saldo, als de gewenste bedrag is ingevoerd.
-                {
-                    System.out.println("Werkt 10 euro");
-                    blankLabel.setForeground(Color.red);
-                    blankLabel.setText("Onvoldoende saldo.");
+                inputgeld = 10;
+                BalanceResponse balanceResponse = balance(iban);
+                saldo = balanceResponse.getBalans();
+                if(biljet10>0) {
+                    tienEuro.setEnabled(true);
+                    if (inputgeld > saldo) //Saldo controleren op genoeg saldo, als de gewenste bedrag is ingevoerd.
+                    {
+                        System.out.println("Werkt 10 euro");
+                        blankLabel.setForeground(Color.red);
+                        blankLabel.setText("Onvoldoende saldo.");
+                    } else if (inputgeld < saldo || inputgeld == saldo) {
+                        cardTest.show(mainPanel, "bevestigPage");
+                        checkLimiet = true;
+                        geldBevestiging.setText("Wilt u " + inputgeld + " euro opnemen?");
+                        blankLabel.setText(".");
+                        blankLabel.setForeground(Color.BLACK);
+                        hoeveelheid10 = 1;
+                        pagina = "bevestigPage";
+                    }
                 }
-                else if(a<saldo || a == saldo) {
-                    cardTest.show(mainPanel, "bevestigPage");
-                    checkLimiet = true;
-                    geldBevestiging.setText("Wilt u " + a + " euro opnemen?");
-                    blankLabel.setText(".");
-                    blankLabel.setForeground(Color.BLACK);
-                    pagina = "bevestigPage";
+                else
+                {
+                tienEuro.setEnabled(false);
                 }
 
             }
         });
         twintigEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                a = 20;
-                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
-                amountMoney = ("/20");
-                if(a> saldo)
-                {
-                    System.out.println("Werkt20 euro");
-                    blankLabel.setForeground(Color.red);
-                    blankLabel.setText("Onvoldoende saldo.");
+                inputgeld = 20;
+                BalanceResponse balanceResponse = balance(iban);
+                saldo = balanceResponse.getBalans();
+                if(biljet20 >0) {
+                    twintigEuro.setEnabled(true);
+                    if (inputgeld > saldo) {
+                        System.out.println("Werkt20 euro");
+                        blankLabel.setForeground(Color.red);
+                        blankLabel.setText("Onvoldoende saldo.");
+                    } else if (inputgeld < saldo || inputgeld == saldo) {
+                        cardTest.show(mainPanel, "bevestigPage");
+                        checkLimiet = true;
+                        geldBevestiging.setText("Wilt u " + inputgeld + " euro opnemen?");
+                        blankLabel.setText(".");
+                        hoeveelheid20 = 1;
+                        blankLabel.setForeground(Color.BLACK);
+                        pagina = "bevestigPage";
+                    }
                 }
-                else if(a<saldo|| a == saldo) {
-                    cardTest.show(mainPanel, "bevestigPage");
-                    checkLimiet = true;
-                    geldBevestiging.setText("Wilt u " + a + " euro opnemen?");
-                    blankLabel.setText(".");
-                    blankLabel.setForeground(Color.BLACK);
-                    pagina = "bevestigPage";
+                else
+                {
+                    twintigEuro.setEnabled(false);
                 }
             }
+
         });
         vijftigEuro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                a = 50;
-                saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
-                amountMoney = ("/50");
-                if(a> saldo)
-                {
-                    System.out.println("Werkt 50 euro");
-                    blankLabel.setForeground(Color.red);
-                    blankLabel.setText("Onvoldoende saldo.");
+                inputgeld = 50;
+                BalanceResponse balanceResponse = balance(iban);
+                saldo = balanceResponse.getBalans();
+                if(biljet50>0) {
+                    vijftigEuro.setEnabled(true);
+                    if (inputgeld > saldo) {
+
+                        System.out.println("Werkt 50 euro");
+                        blankLabel.setForeground(Color.red);
+                        blankLabel.setText("Onvoldoende saldo.");
+                    } else if (inputgeld < saldo || inputgeld == saldo) {
+                        cardTest.show(mainPanel, "bevestigPage");
+                        checkLimiet = true;
+                        geldBevestiging.setText("Wilt u " + inputgeld + " euro opnemen?");
+                        blankLabel.setText(".");
+                        hoeveelheid50 = 1;
+                        blankLabel.setForeground(Color.BLACK);
+                        pagina = "bevestigPage";
+                    }
                 }
-                else if(a<saldo|| a == saldo) {
-                    cardTest.show(mainPanel, "bevestigPage");
-                    checkLimiet = true;
-                    geldBevestiging.setText("Wilt u " + a + " euro opnemen?");
-                    blankLabel.setText(".");
-                    blankLabel.setForeground(Color.BLACK);
-                    pagina = "bevestigPage";
+                else
+                {
+                    vijftigEuro.setEnabled(false);
                 }
             }
         });
@@ -611,25 +641,23 @@ public class ReadCard implements SerialPortEventListener {
         {
             public void actionPerformed(ActionEvent ae) {
                 {
-                    if(checkPassword() == false) {
+                    PinAuthenticatieResponse pinAuthenticatieResponse = pinAuthenticatie(uid, String.valueOf(pinField.getPassword()));
+                    System.out.println();
+                    if(pinAuthenticatieResponse.isPin() == true) {
                         cardTest.show(mainPanel, "menu");
                         pagina = "menu";
                         System.out.println("Toegang ");
-                        kansen = 0;
+
                         pinLabel.setText("Voer uw pincode in");
                         anderField.setText("0");
                     }
-                    else if(checkPassword() == true && kansen == 0)
+                    else if(pinAuthenticatieResponse.isPin()  == false && pinAuthenticatieResponse.getFailedAttemps()<=2)
                     {
-                        pinLabel.setText("U heeft nog 2 pogingen");
-                        kansen = 1;
+
+                        pinLabel.setText("U heeft nog "+(3-pinAuthenticatieResponse.getFailedAttemps())+" poging(en)");
                     }
-                    else if(checkPassword() == true && kansen == 1)
-                    {
-                        pinLabel.setText("U heeft nog 1 poging over");
-                        kansen = 2;
-                    }
-                    else if(checkPassword() == true && kansen == 2)
+
+                    else if(pinAuthenticatieResponse.getGeblokeerdpas() == 1)
                     {
                         enter.setEnabled(false);
                         pinLabel.setText("Uw pas is geblokkeerd");
@@ -755,11 +783,16 @@ public class ReadCard implements SerialPortEventListener {
 
                 if(checkLimiet() == false)
                 {
-                    System.out.println(withdraw(request.getIBAN(), request.getAmount()).getNewSaldo());
-
                     cardTest.show(mainPanel, "bonPage");
                     pagina = "bonPage";
                     System.out.println("Geen limiet");
+                    WithdrawResponse response = withdraw(iban, inputgeld);
+                    biljet10 = biljet10-hoeveelheid10;
+                    System.out.println(biljet10);
+                    biljet20 = biljet20-hoeveelheid20;
+                    System.out.println(biljet20);
+                    biljet50 = biljet50-hoeveelheid50;
+                    System.out.println(biljet50);
                 }
                 else if(checkLimiet() == true)
                 {
@@ -844,13 +877,13 @@ public class ReadCard implements SerialPortEventListener {
                     }
                     else if(checkSaldo() == false && checkLimiet() == false)
                     {
-                        amountMoney = ("/"+anderField.getText());
+                        inputgeld = Integer.parseInt(anderField.getText());
                         cardTest.show(mainPanel, "keuze");
                         textVoorbeeld.setText("Alleen tientallen invoeren");
                         textVoorbeeld.setForeground(Color.black);
                         pagina = "keuze";
+                        checkHoeveelheidBiljetten();
                         checkBiljet();
-
                     }
                 }
                 else if(geldBevestiging.getText() == null)
@@ -865,7 +898,7 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "home");
                 anderField.setText("0");
-                a = 0;
+                inputgeld = 0;
                 pagina = "home";
                 textVoorbeeld.setText("Alleen tientallen invoeren");
                 textVoorbeeld.setForeground(Color.black);
@@ -876,7 +909,7 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "menu");
                 anderField.setText("0");
-                a = 0;
+                inputgeld = 0;
                 pagina = "menu";
                 textVoorbeeld.setText("Alleen tientallen invoeren");
                 textVoorbeeld.setForeground(Color.black);
@@ -957,7 +990,7 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "menu");
                 anderField.setText("0");
-                a = 0;
+                inputgeld = 0;
                 button50.setEnabled(true);
                 pagina = "menu";
             }
@@ -967,7 +1000,7 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "home");
                 anderField.setText("0");
-                a = 0;
+                inputgeld = 0;
                 button50.setEnabled(true);
                 pagina = "home";
 
@@ -995,7 +1028,7 @@ public class ReadCard implements SerialPortEventListener {
             public void actionPerformed(ActionEvent ae) {
                 cardTest.show(mainPanel, "home");
                 anderField.setText("0");
-                a = 0;
+                inputgeld = 0;
                 pagina = "home";
 
             }
@@ -1041,71 +1074,212 @@ public class ReadCard implements SerialPortEventListener {
         return saldoPage;
     }
 
-    private int checkBiljet()
-    {
+    private void checkHoeveelheidBiljetten() {
         int getal = Integer.parseInt(anderField.getText());
-        int check10;
-        int check20;
-        int check50;
-        int remainder10;
-        int remainder20;
-        int remainder50;
-        check10 = getal/10;
-        check20 = getal/20;
-        check50 = getal/50;
-        remainder10 = getal%10;
-        remainder20 = getal%20;
-        remainder50 = getal%50;
+        int amount10, amount20, amount50, amount20a,amount20b;
+        amount10 = getal / 10;
+        amount20 = getal / 20;
+        amount50 = getal / 50;
 
-        if(getal>0 && remainder20 == 0 && getal <50)
+        if (amount10 > biljet10 || biljet10 == 0)
         {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText(String.valueOf(check20) + "x €20[2]");
-            if(getal != 50)
+            System.out.println("Geen tiennen over!");
+            button10.setEnabled(false);
+
+            if (amount20 > biljet20 || biljet20 == 0)
+            {
+                button20.setEnabled(false);
+                if (amount50 > biljet50||biljet50 == 0) {
+                    button50.setEnabled(false);
+                }
+            }
+                 if (amount50 > biljet50|| biljet50 == 0)
+                {
+                    button50.setEnabled(false);
+                    if (amount20 > biljet20||biljet20 == 0)
+                    {
+                        button20.setEnabled(false);
+                    }
+                }
+        }
+
+        if (amount20 > biljet20 || biljet20 ==0)
+        {
+            System.out.println("Geen twintigjes over!");
+            button20.setEnabled(false);
+            amount20a = getal - (50*amount50);
+            amount20b = amount20a/20;
+            System.out.println(amount20b);
+            if (amount10 > biljet10|| biljet10 ==0)
+            {
+                button10.setEnabled(false);
+                button50.setEnabled(false);
+                if (amount50 > biljet50|| biljet50 ==0)
+                {
+                    button50.setEnabled(false);
+                }
+            }
+             if (amount50 > biljet50|| biljet50 ==0)
+            {
+                button20.setEnabled(false);
+                button50.setEnabled(false);
+                if (amount10 > biljet10|| biljet10 ==0)
+                {
+                    button10.setEnabled(false);
+                }
+            }
+            if(amount20b>0)
             {
                 button50.setEnabled(false);
             }
-            else
+
+        }
+
+         if (amount50 > biljet50|| biljet50 ==0)
+        {
+            System.out.println("Geen vijftigjes over!");
+            button50.setEnabled(false);
+            if (amount10 > biljet10|| biljet10 ==0)
             {
-                button50.setText(String.valueOf(check50) + "x €50[3]");
+                button10.setEnabled(false);
+                if (amount20 > biljet20|| biljet20 ==0) {
+                    button20.setEnabled(false);
+                }
             }
-        }
-        else if(getal >490 && remainder50 == 0)
-        {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText(String.valueOf(check20) + "x €20[2]");
-            button50.setText(String.valueOf(check50) + "x €50[3]");
-        }
-        else if(getal >50 && remainder50 == 0)
-        {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText("1x €10 "+ String.valueOf(check20) + "x €20[2]");
-            button50.setText(String.valueOf(check50) + "x €50[3]");
-        }
-        else if(getal >50 && remainder50 == 10)
-        {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText(String.valueOf(check20) + "x €20[2]");
-            button50.setText("1x €10 "+ String.valueOf(check50) + "x €50[3]");
-        }
-        else if(getal >50 && remainder50 == 20 || remainder50 == 40)
-        {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText("1x €10 "+ String.valueOf(check20) + "x €20[2]");
-            button50.setText("2x €20 "+ String.valueOf(check50) + "x €50[3]");
-        }
-        else if(getal >50 && remainder50 == 30)
-        {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText("1x €10 "+ String.valueOf(check20) + "x €20[2]");
-            button50.setText("1x €10 "+ "1x €20 "+ String.valueOf(check50) + "x €50[3]");
+             if (amount20 > biljet20|| biljet20 ==0)
+            {
+                button20.setEnabled(false);
+                if (amount10 > biljet10|| biljet10 ==0)
+                {
+                    button10.setEnabled(false);
+                }
+            }
         }
         else
         {
-            button10.setText(String.valueOf(check10)+"x €10[1]");
-            button20.setText("1x €10 "+ String.valueOf(check20) + "x €20[2]");
-            button50.setText(String.valueOf(check50) + "x €50[3]");
+            if(biljet10 >= amount10) {
+                button10.setEnabled(true);
+                if(biljet20 >= amount20)
+                {
+                    button20.setEnabled(true);
+                }
+                if(biljet50 >=amount50)
+                {
+                    button50.setEnabled(true);
+                }
+            }
+            if(biljet20>= amount20) {
+                button20.setEnabled(true);
+                if(biljet10 >= amount10)
+                {
+                    button10.setEnabled(true);
+                }
+                if(biljet50>=amount50)
+                {
+                    button50.setEnabled(true);
+                }
+            }
+            if(biljet50 >= amount50)
+            {
+                button50.setEnabled(true);
+                if(biljet10>amount10)
+                {
+                    button10.setEnabled(true);
+                }
+                if(biljet20>=amount20)
+                {
+                    button20.setEnabled(true);
+                }
+            }
         }
+
+                return;
+            }
+
+    private int checkBiljet()
+    {
+        int getal = Integer.parseInt(anderField.getText());
+        int firstcheck10, secondcheck10, thirdcheck10, fourthcheck10;
+        int firstcheck20, secondcheck20;
+        int firstcheck50;
+        firstcheck10 = getal/10;
+        firstcheck20 = getal/20;
+        firstcheck50 = getal/50;
+       int remaining50;
+       int remaining20;
+       int remaining10;
+       int remainingsaldo, secondremainingsaldo, thirdremainingsaldo;
+
+        if(firstcheck20>=1)
+        {
+            secondremainingsaldo = getal-firstcheck20* 20;
+            fourthcheck10 = secondremainingsaldo /10;
+            if(firstcheck50>0) {
+
+                remaining50 = firstcheck50 * 50;
+                remainingsaldo = getal - remaining50;
+                secondcheck20 = remainingsaldo / 20;
+                secondcheck10 = remainingsaldo / 10;
+
+                if (secondcheck20 >= 1) {
+                    thirdcheck10 = remainingsaldo - (secondcheck20 * 20);
+                    if (thirdcheck10 >= 1) {
+                        button50.setText(String.valueOf(thirdcheck10 + "x €10 " + secondcheck20 + "x €20 " + firstcheck50 + "x €50 [3]"));
+                        hoeveelheid10 = thirdcheck10;
+                        hoeveelheid20 = secondcheck20;
+                        hoeveelheid50 = firstcheck50;
+                    }
+                    else
+                    {
+                        button50.setText(String.valueOf(secondcheck20 + "x €20 " + firstcheck50 + "x €50[3]"));
+                        hoeveelheid20 = secondcheck20;
+                        hoeveelheid50 = firstcheck50;
+                    }
+                    button20.setText(String.valueOf(fourthcheck10+"x €10 "+ firstcheck20+"x €20[2]"));
+                    hoeveelheid10 = fourthcheck10;
+                    hoeveelheid20 = firstcheck20;
+                } else if (secondcheck10 >= 1) {
+                    button50.setText(String.valueOf(secondcheck10 + "x €10 " + firstcheck50 + "x €50[3]"));
+                    hoeveelheid10 = secondcheck10;
+                    hoeveelheid50 = firstcheck50;
+                    if(fourthcheck10 == 0)
+                    {
+                        button20.setText(String.valueOf(firstcheck20 + "x €20[2]"));
+                        hoeveelheid20=firstcheck20;
+                    }
+                    else if(fourthcheck10>=1)
+                    {
+                        button20.setText(String.valueOf(fourthcheck10+"x €10 "+firstcheck20+"x €20[2]"));
+                        hoeveelheid10 = fourthcheck10;
+                        hoeveelheid20 = firstcheck20;
+                    }
+                } else {
+                    button50.setText(String.valueOf(firstcheck50 + "x €50 [3]"));
+                    hoeveelheid50 = firstcheck50;
+                }
+            }
+            else
+            {
+                button50.setEnabled(false);
+            }
+            if(fourthcheck10>=0)
+            {
+                secondcheck10 = secondremainingsaldo / 10;
+                button20.setText(String.valueOf(secondcheck10 + "x €10 " + firstcheck20 + "x €20[2]"));
+                hoeveelheid10 = secondcheck10;
+                hoeveelheid20 = firstcheck20;
+            }
+            button20.setText(String.valueOf(firstcheck20+"x €20 [2]"));
+            hoeveelheid20 = firstcheck20;
+
+        }
+        else
+        {
+            button20.setEnabled(false);
+            button50.setEnabled(false);
+        }
+        button10.setText(String.valueOf(firstcheck10+"x €10[1]"));
+        hoeveelheid10 = firstcheck10;
 
         return checkBiljet();
     }
@@ -1135,7 +1309,8 @@ public class ReadCard implements SerialPortEventListener {
     {
         int getal = Integer.parseInt(anderField.getText());
         boolean checkSaldo;
-        saldo = balance(request.getIBAN(),request.getAmount()).getBalance();
+        BalanceResponse balanceResponse = balance(iban);
+        saldo = balanceResponse.getBalans();
         if(getal> saldo)
         {
             System.out.println("Niet genoeg saldo werkt");
@@ -1179,27 +1354,7 @@ public class ReadCard implements SerialPortEventListener {
 
     }
 
-    private boolean checkPassword()
-    {
-        //ID = response.getCurrentID();
-        String pinPassword = new String();
-        pinPassword = String.valueOf(pinField.getPassword());
-        pincode = ("/"+pinPassword);
-        boolean checkPassword;
-        if( pinAuthenticatie(ID,pincode).isPinCorrect() == true)
-        {
-            System.out.println("Pass werkt");
-            checkPassword = false;
-            return checkPassword;
-        }
-        else
-        {
-            System.out.println("Niet goed wachtwoord");
-            checkPassword = true;
-            return checkPassword;
-        }
-    }
-
+    int switchingcount= 0;
     ///////////////////// serialprinlnt + input van button een functie toewijzen.
     public void serialEvent(SerialPortEvent spe) {
         if (spe.getEventType() == SerialPortEvent.DATA_AVAILABLE)
@@ -1208,32 +1363,57 @@ public class ReadCard implements SerialPortEventListener {
             {
                 byte[] readBuffer = new byte[40];
                 String inputLine = input.readLine();
-                //System.out.println(inputLine);
+                System.out.println(inputLine);
 
                 //home scan page
                 if(pagina == "home")
                 {
 
-                    String bankId = inputLine.substring(0,22);
-                    System.out.println(bankId);
-                    ID = (bankId);
-
-                    String UID = inputLine.substring(22,31);
+                    String UID = inputLine.substring(0, 8);
+                    uid = UID;
                     System.out.println(UID);
-                    boolean checkID = authenticatie(UID,ID).getPasExist();
+
+                    ID = (hexToAscii(inputLine.substring(8,30)));
+                    iban = ID;
+                    System.out.println(ID);
+
+                    boolean checkID = authenticatie(UID,ID);
 
                     if (inputLine.equals("D")) {
                         sluitprogramma.doClick(400);
+                        System.out.println("close");
                     }
-                    else if (checkID == true)
-                    {scan.doClick(300);
-                    
+                   else if (checkID == true )
+                    {
+                        title.setText("Welkom bij Mesosbank, Scan uw kaart)");
+                        scan.doClick(300);
                         System.out.println(" scan worked");
                         secondsAll = 0;inputLine = null;
                         return;
-                    }else if (inputLine.equals("A")) {
-                        scan.doClick(300);
                     }
+                    else if(checkID == false)
+                    {
+                        title.setText("Rescan uw pas/Onbekende pas");
+                        if(switchingcount ==0)
+                        {
+                            target = client.target(outerIP);
+                        }
+                        if(switchingcount ==1)
+                        {
+                            target = client.target(innerIP);
+                        }
+                        if(switchingcount ==2)
+                        {
+                            target = client.target(outerIP);
+                            switchingcount =0;
+                        }
+                         else
+                         {
+                            switchingcount++;
+                             System.out.println("Wrong IP");
+                         }
+                    }
+
                 }
                 // ok page
                 if(pagina == "ok") {
@@ -1244,7 +1424,7 @@ public class ReadCard implements SerialPortEventListener {
                 //pin invoeren
                 if(pagina == "pin")
                 {
-                    if(inputLine.equals("A")){enter.doClick(200); inputLine = null;}
+                    if(inputLine.equals("A")){enter.doClick(1000); inputLine = null;}
                     else if (inputLine.equals("D")) {exit.doClick(300);}
                     else if (inputLine.equals("B")) {inputLine = null;}
                     else if (inputLine.equals("C")) {inputLine = null;}
@@ -1329,43 +1509,62 @@ public class ReadCard implements SerialPortEventListener {
             }
     }
 
-    public BalanceResponse balance(String IBAN, long amount) {
+    public static String hexToAscii(String h){
+        String hex = h;
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < hex.length(); i+=2) {
+            String str = hex.substring(i, i+2);
+            output.append((char)Integer.parseInt(str, 16));
+        }
+        return output.toString();
+    }
+
+    public BalanceResponse balance(String IBAN) {
 
         BalanceResponse response = target
-                .path(balance + ID)
+                .path("/balance/" + IBAN)
                 .request(MediaType.APPLICATION_JSON)
                 .get(BalanceResponse.class);
 
 
+
         return response;
     }
 
-    public WithdrawResponse withdraw(String IBAN, Long amount) {
+    public WithdrawResponse withdraw(String iban, Long amount) {
+
+        WithdrawRequest request = new WithdrawRequest();
+        request.setAmount(amount);
+        request.setIBAN(iban);
 
         WithdrawResponse response = target
-                .path("/withdraw/"+ID+ amountMoney)
-                .request()
-                .get(WithdrawResponse.class);
+                .path("/withdraw")
+                .request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(request, MediaType.APPLICATION_JSON), WithdrawResponse.class);
 
         return response;
     }
 
-    public AuthenticatieResponse authenticatie(String UID, String rekeningNr) {
+    public boolean authenticatie(String uid, String iban) {
+        AuthenticatieRequest request = new AuthenticatieRequest();
+                request.setIban(iban);
+                request.setUid(uid);
 
         AuthenticatieResponse response = target
-                .path(validate + ID +UID)
-                .request(MediaType.APPLICATION_JSON)
-                .get(AuthenticatieResponse.class);
+                .path("/verifycard").request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(request, MediaType.APPLICATION_JSON), AuthenticatieResponse.class);
 
-        return response;
+        return response.isCardExists();
     }
 
-    public PinAuthenticatieResponse pinAuthenticatie(String rekeningNr, String pincode) {
+    public PinAuthenticatieResponse pinAuthenticatie(String uid, String pin) {
+        PinAuthenticatieRequest request = new PinAuthenticatieRequest();
+        request.setPin(pin);
+        request.setUid(uid);
 
         PinAuthenticatieResponse response = target
-                .path(validatePin + ID + pincode)
-                .request(MediaType.APPLICATION_JSON)
-                .get(PinAuthenticatieResponse.class);
+                .path("/verifypin").request(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(request, MediaType.APPLICATION_JSON), PinAuthenticatieResponse.class);
 
         return response;
     }
