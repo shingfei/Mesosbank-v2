@@ -71,33 +71,28 @@ public class Databaseimpl implements Database
         return saldo;
     }
     @Override
-    public long withdraw(String rekeningNr, long amount)
-    {
-        System.out.println("Start withdraw");
-        long nieuweBalans = 0;
+    public boolean withdraw(String rekeningNr, long amount) {
         try {
             long saldo = getBalance(rekeningNr);
-                if (saldo > amount) {
-                    //mogen pinnen
-                    PreparedStatement ps = con.prepareStatement("UPDATE Account" + " SET Balans = ? "
-                            + "WHERE Rekeningnmr = ?");
-                    ps.setLong(1, (saldo - amount));
-                    ps.setString(2,rekeningNr);
-                    ps.execute();
-                    nieuweBalans = getBalance(rekeningNr);
-                    return nieuweBalans;
-                }
-                else
-                    {
-                        System.out.println("Saldo ontoerijkend!");
-                        return nieuweBalans;
-                    }
+            if (saldo >= amount) {
+                System.out.println(("iban: {}\t saldo: {} "+rekeningNr+saldo));
+
+                PreparedStatement ps = con.prepareStatement("UPDATE Account SET Balans = ? WHERE Rekeningnmr = ?");
+                ps.setLong(1, (saldo - amount));
+                ps.setString(2, rekeningNr);
+
+                boolean rs = ps.execute();
+                System.out.println("Nieuwe saldo: {}"+getBalance(rekeningNr));
+
+                return true;
             }
-        catch (Exception e)
-        {
-            System.out.println("SQL error"+ e.toString());
+            System.out.println("Saldo is ontoreikend");
+            return false;
         }
-        return nieuweBalans;
+        catch (SQLException e){
+            System.out.println("execution of query withdraw failed"+ e);
+        }
+        return false;
     }
     @Override
     public boolean pasAuthenticatie(String Uid, String rekeningNr)
@@ -122,64 +117,96 @@ public class Databaseimpl implements Database
         return false;
     }
 
-    public boolean pinAuthenticatie(String rekeningNr, String pin)
-    {
-        System.out.println("authenticatie van de pincode begint");
-        try
-        {
-
-            PreparedStatement ps = con.prepareStatement("SELECT  Status " + " FROM Account " + " WHERE Rekeningnmr = ? " );
-            ps.setString(1,rekeningNr);
+    public boolean pinAuthenticatie(String uid, String pin){
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT blokkade FROM Account WHERE UID = ?");
+            ps.setString(1, uid);
             ResultSet rs = ps.executeQuery();
+            rs.next();
+            int blok = rs.getInt("blokkade");
 
-            if(rs.next())
-            {
-                int status = rs.getInt("Status");
-                System.out.println("Status is :"+status);
-                if(status >= 3)
-                {
-                    System.out.println("Pas is geblockeerd! Neem contact op met de bank");
-                    return false;
-                }
-                else
-                    {
-                        System.out.println("Begin met pincode checken");
-                        PreparedStatement ps2 = con.prepareStatement("SELECT pincode " + "FROM Account " + " WHERE Rekeningnmr = ? " + " AND pincode = ?");
-                        ps2.setString(1, rekeningNr);
-                        ps2.setString(2, pin);
-                        ResultSet rs2 = ps2.executeQuery();
-                        System.out.println("Pincode is gechecked");
-                        if (rs2.next())
-                        {
-                            PreparedStatement ps4 = con.prepareStatement("UPDATE Account "+ " SET Status = 0" + " WHERE Rekeningnmr = ?");
-                            ps4.setString(1, rekeningNr);
-                            ps4.execute();
-                            System.out.println("Pincode klopt en status staat weer op 0 :)");
-                            return true;
-                        }
-                        else
-                            {
-                                System.out.println("Boven status updaten");
-                                PreparedStatement ps3 = con.prepareStatement("UPDATE Account "+ " SET Status = Status + 1" + " WHERE Rekeningnmr = ?");
-                                ps3.setString(1, rekeningNr);
-                                System.out.println("voor status execute");
-                                ps3.execute();
-                                System.out.println("Foute poging!, status is geupdate!");
-                                return false;
-                            }
-
-                    }
+            if(blok == 1){
+                return false;
             }
-            else
-                {
+            else {
+                PreparedStatement ps2 = con.prepareStatement("SELECT pincode FROM Account WHERE UID = ? AND pincode = ?");
+                ps2.setString(1, uid);
+                ps2.setString(2, pin);
+
+                ResultSet rs2 = ps2.executeQuery();
+
+                if (rs2.next()){
+
+                    PreparedStatement ps3 = con.prepareCall("UPDATE Account SET Status = 0 WHERE UID = ?");
+                    ps3.setString(1,uid);
+                    ps3.execute();
+
+                    return true;
+                }
+                else {
+                    int plus = getAttemps(uid);
+                    plus+=1;
+
+                    PreparedStatement ps4 = con.prepareCall("UPDATE Account SET Status = ? WHERE UID = ?");
+                    ps4.setInt(1, plus);
+                    ps4.setString(2,uid);
+                    ps4.execute();
+
+
+
+
+                    if (getAttemps(uid) >= 3){
+                        PreparedStatement ps5 = con.prepareCall("UPDATE Account SET blokkade = 1 WHERE UID = ?");
+                        ps5.setString(1,uid);
+                        ps5.execute();
+                        return false;
+                    }
                     return false;
                 }
+            }
+
 
         }
-        catch(Exception e)
-        {
-            System.out.println("Authenticatie vd pincode gaat fout!");
+        catch (SQLException e){
+            System.out.println("query kon niet worden  1");
         }
+
         return false;
+    }
+
+    //@Override
+    public int getAttemps(String uid){
+        int pogingen = 0;
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT Status "+" FROM Account "+" WHERE UID = ?");
+            ps.setString(1, uid);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            pogingen = rs.getInt("Status");
+            return pogingen;
+        }
+        catch (SQLException e){
+            System.out.println("query get attempts kon niet worden uitgevoerd 2");
+        }
+
+        return pogingen;
+    }
+
+    // @Override
+    public int getblokkade(String uid){
+        int blokkade = 0;
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT blokkade "+" FROM Account "+" where UID = ?");
+            ps.setString(1, uid);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            blokkade = rs.getInt("blokkade");
+            return blokkade;
+        }
+        catch (SQLException e){
+            System.out.println("blokkade error");
+        }
+
+        return blokkade;
     }
 }

@@ -6,7 +6,9 @@ package nl.hro.rick.mesosbank.server;
 public interface Database
 {
     long getBalance(String rekeningNr);
-    long withdraw(String rekeningNr, long amount);
+    boolean withdraw(String rekeningNr, long amount);
     boolean pasAuthenticatie(String Uid, String rekeningNr);
     boolean pinAuthenticatie(String rekeningNr, String pin);
+    int getAttemps(String uid);
+    int getblokkade(String uid);
 }

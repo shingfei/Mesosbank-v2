@@ -12,9 +12,9 @@ public class MockDatabase implements Database
     }
 
     @Override
-    public long withdraw(String rekeningNr, long amount)
+    public boolean withdraw(String rekeningNr, long amount)
     {
-        return 0;
+        return true;
     }
 
     @Override
@@ -26,4 +26,12 @@ public class MockDatabase implements Database
     public boolean pinAuthenticatie(String rekeningNr, String pin) {
         return false;
     }
+
+    public int getAttemps(String uid){
+        return 2132131;
+    }
+
+    public int getblokkade(String uid){
+        return 213213;
+    };
 }

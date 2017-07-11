@@ -31,44 +31,74 @@ public class BankEndpoint
 
 
         Database db = Server.getDatabase();
-        BalanceResponse br = new BalanceResponse(rekeningNummer, db.getBalance(rekeningNummer));
-
+        BalanceResponse br = new BalanceResponse();
+        br.setBalans(db.getBalance(rekeningNummer));
+        br.setIban(rekeningNummer);
         return br;
     }
 
-    @GET
-    @Path("/withdraw/{rekeningNr}/{amount}")
-    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-8")
-    public WithdrawResponse withdraw(@PathParam("rekeningNr") String rekeningNummer,@PathParam("amount") Long amount)
-    {
-        System.out.println("Withdraw werkt~!");
-
+    @POST
+    @Path("/withdraw")
+    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-g")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public WithdrawResponse withdraw(WithdrawRequest request){
+        WithdrawResponse response = new WithdrawResponse();
         Database db = Server.getDatabase();
-        WithdrawResponse wr = new WithdrawResponse("geslaagd", db.withdraw(rekeningNummer, amount));
+        boolean b = db.withdraw(request.getIBAN(), request.getAmount());
+        if (b == false){
+            response.setResponse(false);
+            response.setNewSaldo(db.getBalance(request.getIBAN()));
 
-        return wr;
+            System.out.println("pinnen is mislukt "+ response.isResponse());
+            return response;
+        }
+        else {
+            response.setResponse(true);
+            response.setNewSaldo(db.getBalance(request.getIBAN()));
+            response.setBedragGepint(request.getAmount());
+            response.setIban(request.getIBAN());
+            return response;
+
+        }
     }
 
-    @GET
-    @Path("/validate/{rekeningNr}/{Uid}")
-    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-8")
-    public AuthenticatieResponse authenticatie (@PathParam("Uid") String Uid,@PathParam("rekeningNr")  String rekeningNr)
-    {
-        Database db = Server.getDatabase();
-        AuthenticatieResponse ar = new AuthenticatieResponse( db.pasAuthenticatie(Uid, rekeningNr));
+    @POST
+    @Path("/verifycard")
+    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-g")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public AuthenticatieResponse verifycard(AuthenticatieRequest request){
+        AuthenticatieResponse response = new AuthenticatieResponse();
 
-        return ar;
+        Database db = Server.getDatabase();
+
+        if (db.pasAuthenticatie(request.getUid(), request.getIban()) == true){
+            response.setCardExists(true);
+            return response;
+        }
+
+        response.setCardExists(false);
+        return response;
     }
 
-    @GET
-    @Path("/validatePin/{rekeningNr}/{pin}")
-    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-8")
-    public PinAuthenticatieResponse pinAuthenticatie (@PathParam("rekeningNr") String rekeningNr, @PathParam("pin") String pin)
-    {
+    @POST
+    @Path("/verifypin")
+    @Produces(MediaType.APPLICATION_JSON + "; charset=utf-g")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public PinAuthenticatieResponse verifypin(PinAuthenticatieRequest request){
+        PinAuthenticatieResponse response = new PinAuthenticatieResponse();
         Database db = Server.getDatabase();
-        PinAuthenticatieResponse par = new PinAuthenticatieResponse( db.pinAuthenticatie(rekeningNr, pin));
 
-        return par;
+        if(db.pinAuthenticatie(request.getUid(), request.getPin()) == true){
+            response.setPin(true);
+            return response;
+        }
+        else {
+            response.setFailedAttemps(db.getAttemps(request.getUid()));
+            response.setGeblokeerdpas(db.getblokkade(request.getUid()));
+            return response;
+        }
+
+
     }
 
 }
